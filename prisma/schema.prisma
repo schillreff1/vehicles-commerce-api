@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String   @id @default(uuid())
+  email       String   @unique
+  password    String
+  fullName    String
+  cpf         String   @unique
+  phone       String
+  dateOfBirth DateTime
+  description String
+  isSeller    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  announcements   Announcement[]
+  comments        Comment[]
+  Address         Address?         @relation(fields: [addressId], references: [id], onDelete: Cascade)
+  addressId       String           @unique
+  RecoverPassword RecoverPassword?
+
+  @@map("users")
+}
+
+model Address {
+  id         String  @id @default(uuid())
+  state      String
+  city       String
+  cep        String
+  road       String
+  number     String
+  complement String?
+
+  User User?
+
+  @@map("adresses")
+}
+
+model RecoverPassword {
+  id     String @id @default(uuid())
+  token  String @unique
+  User   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @unique
+}
+
+model Announcement {
+  id          String    @id @default(uuid())
+  title       String
+  typeSale    String
+  year        Int
+  mileage     Int
+  price       String
+  description String
+  typeVehicle String
+  coverImage  String
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  images      Image[]
+  comments    Comment[]
+  User        User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String?
+
+  @@map("announcements")
+}
+
+model Image {
+  id             String        @id @default(uuid())
+  url            String
+  Announcement   Announcement? @relation(fields: [announcementId], references: [id], onDelete: Cascade)
+  announcementId String?
+
+  @@map("images")
+}
+
+model Comment {
+  id             String        @id @default(uuid())
+  content        String
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  Announcement   Announcement? @relation(fields: [announcementId], references: [id], onDelete: Cascade)
+  announcementId String?
+  User           User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId         String?
+
+  @@map("comments")
+}
