@@ -1,73 +1,155 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# API documentation
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Table of Contents
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+- [Overview](#1-overview)
+- [ER Diagram](#2-er-diagram)
+- [Quick Start](#3-quick-start)
+  - [Clone repository](#31-clone-this-repository)
+  - [Configure .env](#32-configure-env)
+  - [Install the dependencies](#33-install-the-dependencies)
+  - [Run the migrations](#34-run-the-migrations)
+  - [Run the project](#35-run-the-project)
+- [Quick Start Using Docker](#4-quick-start-using-docker)
+  - [Clone repository](#41-clone-this-repository)
+  - [Configure .env](#42-configure-env)
+  - [Install the dependencies](#43-install-the-dependencies)
+  - [Settings for running docker](#44-settings-for-running-docker)
+- [Endpoints](#5-endpoints)
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 1. Overview
 
-## Installation
+A simple api for the Motors Shop application, containing CRUD of users, announcements, comments and authentication.
 
-```bash
-$ yarn install
+- [NodeJS](https://nodejs.org/en/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [NestJS](https://docs.nestjs.com/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Prisma](https://www.prisma.io/)
+- [Swagger](https://swagger.io/)
+- [JWT](https://jwt.io/)
+- [Bcrypt.JS](https://www.npmjs.com/package/bcryptjs)
+
+---
+
+## 2. ER Diagram
+
+[Back to the top](#table-of-contents)
+
+ER diagram of the API defining well the relationships between the database tables.
+
+![DER](./assets/der_vehicles_commerce.jpg)
+
+---
+
+## 3. Quick Start
+
+[Back to the top](#table-of-contents)
+
+### 3.1 Clone this repository
+
+```shell
+git clone https://github.com/schillreff/vehicles-commerce-api.git
+cd vehicles-commerce-api
 ```
 
-## Running the app
+### 3.2 Configure .env
 
-```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+```text
+Create an .env file in the project root, copy the contents of .env.example and add the database name, user and password information
 ```
 
-## Test
+### 3.3 Install the dependencies
 
-```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+```shell
+yarn
 ```
 
-## Support
+### 3.4 Run the migrations
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```shell
+yarn prisma migrate dev --name init
+```
 
-## Stay in touch
+### 3.5 Run the project
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```shell
+yarn dev
+```
 
-## License
+---
 
-Nest is [MIT licensed](LICENSE).
+## 4 Quick Start Using Docker
+
+[Back to the top](#table-of-contents)
+
+### 4.1 Clone this repository
+
+```shell
+git clone https://github.com/schillreff/vehicles-commerce-api.git
+cd vehicles-commerce-api
+```
+
+### 4.2 Configure .env
+
+```text
+Create an .env file in the project root, copy the contents of .env.example and add the database name, user and password information
+```
+
+### 4.3 Install the dependencies
+
+```shell
+yarn
+```
+
+### 4.4 Settings for running docker
+
+1. To start and restart all services defined in docker-compose.yml
+
+    ```shell
+    docker-compose up
+    ```
+
+    ```shell
+    sudo docker-compose up
+    ```
+
+2. To stop all services defined in docker-compose.yml
+
+    ```shell
+    docker-compose stop
+    ```
+
+    ```shell
+    sudo docker-compose stop
+    ```
+
+3. To restart the previously stopped containers
+
+    ```shell
+    docker-compose start
+    ```
+
+    ```shell
+    sudo docker-compose start
+    ```
+
+4. To stop container execution, and will remove stopped containers
+
+    ```shell
+    docker-compose down
+    ```
+
+    ```shellV
+    sudo docker-compose down
+    ```
+
+---
+
+## 5 Endpoints
+
+[Back to the top](#table-of-contents)
+
+### 5.1 <https://vehicles-commerce-api.vercel.app>, Documentation
